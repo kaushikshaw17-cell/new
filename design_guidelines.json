@@ -1,0 +1,89 @@
+{
+  "project_name": "Ascend Visual Creatives (AVC) - Awwwards Marketing Agency",
+  "theme": "Dark Luxury Monochrome",
+  "archetype": "ARCHETYPE 5: LUXURY (Premium, Depth, Mystery) - Mixed with High-Contrast Swiss",
+  "typography": {
+    "primary_heading": "Cabinet Grotesk",
+    "secondary_heading": "Cormorant Garamond (Use exclusively for italicized luxury accent words)",
+    "body": "Satoshi",
+    "rules": "No Inter for headings. Use extreme contrast in font weights (e.g., Cabinet Grotesk Black vs Cormorant Garamond Light Italic). Apply 'tracking-tighter' to massive headings. Body text should be readable with 'leading-relaxed'."
+  },
+  "colors": {
+    "background": "#030303",
+    "surface_glass": "rgba(255, 255, 255, 0.03)",
+    "surface_solid": "#0A0A0A",
+    "text_primary": "#F5F5F7",
+    "text_secondary": "#8A8A93",
+    "border": "rgba(255, 255, 255, 0.08)",
+    "accent": "#FFFFFF",
+    "forbidden_colors": ["Yellow", "Gold", "Cyan", "Generic Blue", "Purple"],
+    "rules": "Absolutely no cheap colors. The aesthetic relies entirely on lighting, contrast, and depth in a monochromatic spectrum."
+  },
+  "grids_and_layouts": {
+    "hero": "100vh full bleed. Absolutely centered massive logo. 3D canvas positioned absolute behind the logo with z-index -1.",
+    "work_reels": "Horizontal pinned scroll section (Bento grid mode A adaptation). The user scrolls down, but the reels move horizontally.",
+    "stats": "CSS Grid (grid-cols-1 md:grid-cols-3) with massive typography and 1px border dividers (border-collapse style).",
+    "spacing": "Generous spacing. Use py-32 or py-48 for section transitions. Container padding px-6 md:px-12."
+  },
+  "visual_enhancers": {
+    "cursor": "Custom magnetic cursor. Use a fixed framer-motion div (mix-blend-difference) that scales up when hovering over interactive elements or reels.",
+    "noise": "Subtle SVG noise/grain overlay across the entire site (fixed, pointer-events-none, opacity 3%).",
+    "surfaces": "Crystal Glass variant for sticky header (backdrop-blur-2xl, bg-black/60, border-b border-white/10)."
+  },
+  "motion": {
+    "scroll_engine": "MANDATORY: Install and use `@studio-freight/react-lenis` for premium momentum scrolling.",
+    "hero_choreography": "On initial load: Logo scales up from 0.8 to 1 with a slow 1.5s ease-out. On scroll down: Use framer-motion `useScroll` and `useTransform` to aggressively scale the massive logo down and fade it out as the next section overlaps it.",
+    "text_reveals": "Split text by lines or words. Reveal using framer-motion clip-path (polygon(0 0, 100% 0, 100% 100%, 0% 100%)) and y-axis translation. Never just fade in.",
+    "parallax": "Apply subtle y-axis parallax to images, 3D canvases, and background text elements to create depth."
+  },
+  "3d_libraries": {
+    "stack": ["@react-three/fiber", "@react-three/drei", "three"],
+    "implementation": "In the Hero section, implement a rich, dark `MeshDistortMaterial` or `MeshTransmissionMaterial` on a massive Sphere or Plane. It should slowly rotate and distort (speed ~1.5, distort ~0.4) reacting to lighting to create a cinematic, liquid obsidian/chrome look behind the massive logo. Ensure lighting (AmbientLight + DirectionalLight) is stark white to catch specular highlights."
+  },
+  "media": {
+    "logo_url": "https://customer-assets-7cd3h4nn.emergentagent.net/job_results-driven-6/artifacts/bl6qc68n_fgsfgrwgtf-removebg-preview.png",
+    "logo_treatment": "Must be prominently visible. Set `w-[90vw] md:w-[70vw] max-w-5xl mx-auto`. No small dissolved logos.",
+    "reels": {
+      "aspect_ratio": "9:16",
+      "treatment": "Wrap iframes in a div with `overflow-hidden rounded-2xl border border-white/10`. Add a glassmorphism hover effect.",
+      "projects": [
+        {"name": "Meta Creator Day", "type": "embed"},
+        {"name": "Tata Sarathi", "type": "embed"},
+        {"name": "Kozynap", "type": "embed"},
+        {"name": "Billionaires Den", "type": "embed"}
+      ]
+    }
+  },
+  "accessibility": {
+    "contrast": "Ensure pure white text on deep black background. Gray text must be at least #8A8A93.",
+    "testing": "All interactive and key informational elements MUST include a `data-testid` attribute (e.g., `data-testid=\"hero-logo\"`, `data-testid=\"contact-submit-button\"`).",
+    "reduced_motion": "Wrap heavy 3D and scroll effects in a prefers-reduced-motion media query check."
+  },
+  "component_path": {
+    "ui_components": "/app/frontend/src/components/ui"
+  },
+  "instructions_to_main_agent": [
+    "INSTALL REQUIRED DEPENDENCIES: `yarn add framer-motion @studio-freight/react-lenis @react-three/fiber @react-three/drei three lucide-react clsx tailwind-merge`",
+    "Do not use TypeScript (.tsx). Write all components as .jsx files.",
+    "Build a monolithic but well-structured App.jsx or break down into cleanly named .jsx components.",
+    "HERO SECTION IS CRITICAL: Do not use a generic split layout. The background should be the dark React Three Fiber canvas. The foreground is the massive Logo image centered, spanning almost the width of the screen.",
+    "SCROLL ANIMATIONS: Standard fades are rejected. You MUST use Framer Motion's `useScroll` to map scroll progress to scaling, translation, and opacity. Create a horizontal scroll section for the Reels.",
+    "REELS SECTION: Create 4 massive cards. Since actual embed codes aren't provided, use dummy youtube/instagram iframes (e.g., `src=\"https://www.youtube.com/embed/SHORT_VIDEO_ID\"` or styled placeholder divs that perfectly mimic 9:16 video players with a play button), but style the wrappers luxuriously with glassmorphism.",
+    "BRAND MARQUEE: Use Framer Motion to create an infinite slow-scrolling marquee of the brand names (META, TATA, VIVRE, PROVO, etc.). Format them in the Cabinet Grotesk font, uppercase, outlined text (`text-transparent text-stroke-white`).",
+    "CURSOR: Implement a fixed div that follows the mouse (x/y mapped via framer-motion mouse event listener). Make it `mix-blend-difference` so it inverts the colors behind it.",
+    "COLORS: The user hates the previous yellow/gold. Stick STRICTLY to the Dark Luxury Monochrome palette. No colors except Black, White, and dark shades of Gray."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. In frontend design, this creates what users call the 'AI slop' aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur).",
+    "You MUST NOT apply universal transition. Eg: `transition: all`. Always add transitions for specific interactive elements.",
+    "You MUST NOT center align the app container, ie do not add `.App { text-align: center; }` in the css file.",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style.",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Use sonner for toasts if any notifications are needed."
+  ]
+}
